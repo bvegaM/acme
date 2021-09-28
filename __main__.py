@@ -1,8 +1,19 @@
-from main.utils import util
+import argparse
 
+from main.controller import files
+
+def main(path:str):
+    data = files.read_text_input(path)
+    print(data)
 
 if __name__ == '__main__':
-    text = 'RENE=MO10:00-12:02,TU10:00-12:00,TH01:00-03:00,SA14:00-18:00,SU20:00-21:00'
-    start_time,end_time = util.get_start_end_time(util.get_range_hours(util.get_workweek(text).split(',')[0]))
-    print(end_time)
-    pass
+    
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument('path',
+    help='''Employees work data file path''',
+    type=str,default='./data/input.txt')
+
+    args = parser.parse_args()
+
+    main(args.path)
