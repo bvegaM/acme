@@ -8,5 +8,5 @@ class Person:
     def get_salary(self)-> float:
         if '' in self.workweek:
             print('{name} have not complete work week'.format(self.name))
-        pass
+        return 0.0
     
